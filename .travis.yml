@@ -2,19 +2,8 @@ sudo: false
 language: node_js
 node_js:
   - "0.10"
-cache:
-  - apt
-addons:
-  apt:
-    sources:
-      - mono
-      - mono-beta
-      - mono-libtiff-compat
-    packages:
-      - mono-complete
-      - nuget
-      - referenceassemblies-pcl
 after_success:
+  - rm dist/*
   - grunt compile
-  - nuget pack Knockout.Validation.nuspec
-  - curl -i -F name=knockout.validation.travis.nupkg -F file=@Knockout.Validation.2.1.0.nupkg https://uguu.se/api.php?d=upload-tool
+  - tar cvf ./knockout.validation.travis.tar.gz dist/*
+  - curl -i -F name=knockout.validation.travis.tar.gz -F file=@knockout.validation.travis.tar.gz https://uguu.se/api.php?d=upload-tool
