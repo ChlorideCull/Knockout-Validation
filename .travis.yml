@@ -8,8 +8,8 @@ addons:
   apt:
     sources:
       - mono
-	  - mono-beta
-	  - mono-libtiff-compat
+      - mono-beta
+      - mono-libtiff-compat
     packages:
       - mono-complete
       - nuget
